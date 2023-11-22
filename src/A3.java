@@ -1,5 +1,6 @@
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ import java.util.Scanner;
  * @date Fall 2023
  */
 
-public class A3 {
+public class A3  {
 
 	private Map<String, Avenger> avengerMap = new HashMap<>();
 	private String foundKeyWords;
@@ -36,7 +37,22 @@ public class A3 {
 	
 	public static void main(String[] args) {
 		A3 a3 = new A3();
-		a3.run();
+		/**
+		 * testing iterate
+		 */
+		for(int i=0; i < a3.avengerRoster.length; i++)
+			a3.alphabticalBST.add(new Avenger(a3.avengerRoster[i][0], a3.avengerRoster[i][1],a3.avengerRoster[i][2]));
+		
+		System.out.println("printing");
+		Iterator<Avenger> it = a3.alphabticalBST.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
+
+			
+		}for(Avenger a: a3.alphabticalBST) {
+			System.out.println(a.getAlias());
+		}
+		//a3.run();
 	}
 
 	public void run() {
@@ -53,6 +69,11 @@ public class A3 {
 		 *   use the tree iterator to do an in-order traversal of the alphabetical tree,
 		 *   and add avengers to the other trees with alternative ordering
 		 */
+		Avenger toDelete = new Avenger("hawkeye","barton","0");
+		alphabticalBST.delete(toDelete);
+		for(Avenger a: alphabticalBST) {
+			mo
+		}
 	}
 
 	/**
@@ -141,6 +162,7 @@ public class A3 {
 		System.out.println("Total number of words: " + totalwordcount);
 		// TODO: Print the number of mentioned avengers after deleting "barton" and "banner".
 		//System.out.println("Number of Avengers Mentioned: " + ??);
+		//alphabticalBST.printInOrder();
 		System.out.println();
 
 		System.out.println("All avengers in the order they appeared in the input stream:");
