@@ -1,11 +1,13 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Comparator;
 import java.util.Iterator;
 
 
 import org.w3c.dom.Node;
 
 public class BST<T extends Comparable<T>> implements Iterable<T> {
+	private Comparator<T> comparator;
 	class BSTNode implements Comparable<BSTNode> {
 		private T data;
 		private BSTNode left;
@@ -22,11 +24,13 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 		public void setRight(BSTNode r) { right = r; }
 		public BSTNode getLeft() { return left; }
 		public BSTNode getRight() { return right; }
-		public boolean isLeaf() { return (getLeft() == null) && (getRight() == null); }
+		public boolean isLeaf() {
+			return (getLeft() == null) && (getRight() == null); }
 		public int compareTo(BSTNode o) {
 			return this.getData().compareTo(o.getData());
 		}
 	}
+	
 
 	private BSTNode root;
 	private int size;
@@ -39,6 +43,11 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 	public BST() {
 		root = null;
 		size = 0;
+	}
+	public BST(	 Comparator<T> comparator) {
+		size = 0;
+		root=null;
+		this.comparator = comparator;
 	}
 
 	/**
@@ -109,7 +118,16 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 
 
 	private void add(BSTNode r, BSTNode n) {
-        int c = n.compareTo(r);
+		int c=0;
+		if(comparator !=null) {
+        	
+        	
+        	
+        }
+        else {
+        	
+        	 c = n.compareTo(r);
+        }
         if (c < 0) {
             if(r.getLeft() == null) {
                 r.setLeft(n);
@@ -131,9 +149,10 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 	public void delete(T d) {
 		root = delete(root, d);
 	}
-	private void deleteNode(BSTNode r) {
-		if(isLeaf(r)) {
-			return null;
+	
+	private BSTNode deleteNode(BSTNode r) {
+		if(isLeaf()) {
+			return BSTNode;
 		}else if(isLefty(r)) {
 			return r.getLeft();
 		}else if(isRighty(r)) {
@@ -143,6 +162,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 		}
 		
 	}
+	
 	private  T findMin(BSTNode r) {
 		T min = null;
 		if(r != null) {
@@ -155,7 +175,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 			return min;
 		}
 	}
-
+	
 	/* Implement a height method. */
 	private int height(BSTNode r) {
 		if(r == null){
@@ -287,9 +307,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 		}
 		
 	}
-	private int compare(T t1, T t2) {
-		//return ordering.compare(t1,t2);
-	}
+	
 
 	@Override
 	public Iterator<T> iterator() {

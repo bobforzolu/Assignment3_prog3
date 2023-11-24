@@ -40,6 +40,7 @@ public class A3  {
 		/**
 		 * testing iterate
 		 */
+		/*
 		for(int i=0; i < a3.avengerRoster.length; i++)
 			a3.alphabticalBST.add(new Avenger(a3.avengerRoster[i][0], a3.avengerRoster[i][1],a3.avengerRoster[i][2]));
 		
@@ -52,12 +53,13 @@ public class A3  {
 		}for(Avenger a: a3.alphabticalBST) {
 			System.out.println(a.getAlias());
 		}
-		//a3.run();
+		*/
+		a3.run();
 	}
 
 	public void run() {
 		readInput();
-		createdAlternativeOrderBSTs();
+		//createdAlternativeOrderBSTs();
 		printResults();
 	}
 
@@ -71,9 +73,7 @@ public class A3  {
 		 */
 		Avenger toDelete = new Avenger("hawkeye","barton","0");
 		alphabticalBST.delete(toDelete);
-		for(Avenger a: alphabticalBST) {
-			mo
-		}
+		
 	}
 
 	/**
@@ -182,8 +182,14 @@ public class A3  {
 
 		System.out.println("All mentioned avengers in alphabetical order:");
 		// TODO: Print the list of avengers in alphabetical order
-		System.out.println();
+		System.out.println("printing");
+		Iterator<Avenger> it = alphabticalBST.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next());
 
+			
+		}
+		
 		// TODO: Print the actual height and the optimal height for each of the four trees.
 //		System.out.println("Height of the mention order tree is : " + ??
 //				+ " (Optimal height for this tree is : " + ?? + ")");
